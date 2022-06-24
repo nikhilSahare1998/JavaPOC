@@ -25,11 +25,15 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
     }
 
+   /* private Predicate<String> postPaths() {
+        return or(regex("/api/posts.*"), regex("/api/javainuse.*"));
+    }*/
+
     private ApiInfo apiInfo() {
         Contact contact = new Contact("", "", "");
 
         return new ApiInfoBuilder()
-                .title("")
+                .title("POC")
                 .description("")
                 .version("")
                 .contact(contact)

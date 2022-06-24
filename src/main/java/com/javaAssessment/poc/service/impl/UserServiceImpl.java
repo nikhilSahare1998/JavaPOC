@@ -4,7 +4,7 @@ import com.javaAssessment.poc.dto.Mail;
 import com.javaAssessment.poc.dto.UserDto;
 import com.javaAssessment.poc.entity.User;
 import com.javaAssessment.poc.exception.UserException;
-import com.javaAssessment.poc.repository.UserRepository;
+import com.javaAssessment.poc.user.repository.UserRepository;
 import com.javaAssessment.poc.service.MailSenderService;
 import com.javaAssessment.poc.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -35,12 +35,15 @@ public class UserServiceImpl implements UserService {
 
         User dbUser = userRepository.findByEmailIDOrMobileNoOrPanCardOrAadharCard(userDto.getEmailID(), userDto.getMobileNo(), userDto.getPanCard(), userDto.getAadharCard());
         if (!Objects.isNull(dbUser)) {
-            throw new UserException("email ID/Mobile Number / Pan Card / Aadhar card  is not unique", HttpStatus.BAD_REQUEST);
+            throw new UserException("email ID/Mobile Number / Pan Card / Aadhar card  is not unique", HttpStatus.NOT_FOUND);
         } else {
 
-            sendMail(userDto);
+           // sendMail(userDto);
             userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
-            return entityToDto(userRepository.save(dtoTOEntity(userDto)));
+              entityToDto(userRepository.save(dtoTOEntity(userDto)));
+            userDto.setPassword(userDto.getPassword());
+            sendMail(userDto);
+            return userDto;
         }
 
     }
@@ -92,7 +95,7 @@ public class UserServiceImpl implements UserService {
         Mail mail = new Mail();
         mail.setMailFrom("emailId");
         mail.setMailTo(user.getEmailID());
-        mail.setMailTo(mail.getMailTo());
+       // mail.setMailTo(mail.getMailTo());
         mail.setMailSubject("Subject");
         mail.setMailContent(String.format("Welcome \n Your username - %s or %s\nPassword - %s\n\nThanks",
                 user.getEmailID(), user.getMobileNo(), user.getPassword()));
