@@ -2,7 +2,7 @@ package com.javaAssessment.poc.controller;
 
 import com.javaAssessment.poc.dto.UserDto;
 import com.javaAssessment.poc.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -12,16 +12,21 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@ControllerAdvice
 @Validated
 @RequestMapping("/api/user")
+@Slf4j
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping
     public ResponseEntity<Object> createUser(@RequestBody @Valid UserDto userDto) {
+        log.info("");
         return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
 
     }

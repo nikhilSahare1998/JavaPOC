@@ -1,5 +1,6 @@
-package com.javaAssessment.poc.entity;
+package com.javaAssessment.poc.entity.user;
 
+import com.javaAssessment.poc.entity.user.User;
 import lombok.Getter;
 import lombok.Setter;
 

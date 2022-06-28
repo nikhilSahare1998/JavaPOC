@@ -1,9 +1,8 @@
-package com.javaAssessment.poc.entity;
+package com.javaAssessment.poc.entity.user;
 
 
-import com.javaAssessment.poc.util.UserType;
-import lombok.Getter;
-import lombok.Setter;
+import com.javaAssessment.poc.enums.UserType;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,9 +10,14 @@ import java.io.Serializable;
 @Entity
 @Setter
 @Getter
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_Id")
     private Long userId;
 
@@ -51,7 +55,7 @@ public class User implements Serializable {
     private String mobileNo;
 
     @Column(name = "userType")
-    @Enumerated  (EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private UserType userType;
 
     @Column(name = "activeStatus")

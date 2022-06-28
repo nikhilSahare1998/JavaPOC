@@ -2,14 +2,16 @@ package com.javaAssessment.poc.service.impl;
 
 import com.javaAssessment.poc.dto.Mail;
 import com.javaAssessment.poc.dto.UserDto;
-import com.javaAssessment.poc.entity.User;
+import com.javaAssessment.poc.entity.user.User;
 import com.javaAssessment.poc.exception.UserException;
-import com.javaAssessment.poc.user.repository.UserRepository;
+import com.javaAssessment.poc.repository.userrepo.UserRepository;
 import com.javaAssessment.poc.service.MailSenderService;
 import com.javaAssessment.poc.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
@@ -101,5 +104,8 @@ public class UserServiceImpl implements UserService {
                 user.getEmailID(), user.getMobileNo(), user.getPassword()));
         mailService.sendEmail(mail);
     }
+
+
+
 
 }

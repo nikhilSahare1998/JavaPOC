@@ -1,4 +1,5 @@
-package com.javaAssessment.poc.entity;
+package com.javaAssessment.poc.entity.userbackup;
+
 
 import lombok.Data;
 import lombok.Getter;
@@ -12,7 +13,6 @@ import javax.persistence.Id;
 @Setter
 @Document(collection = "user-backup")
 public class UserBackup {
-
 
     @Id
     private Long userId;

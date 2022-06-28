@@ -1,7 +1,6 @@
 package com.javaAssessment.poc.configuration;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -13,8 +12,13 @@ import java.util.Properties;
 
 @Configuration
 public class MailConfiguration {
-    @Autowired
-    private Environment environment;
+
+    private final Environment environment;
+
+    public MailConfiguration(Environment environment) {
+        this.environment = environment;
+    }
+
     @Bean
     public JavaMailSender getMailSender(){
         JavaMailSenderImpl javaMailSender=new JavaMailSenderImpl();

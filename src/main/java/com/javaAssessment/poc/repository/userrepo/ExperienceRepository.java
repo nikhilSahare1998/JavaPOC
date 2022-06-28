@@ -1,6 +1,6 @@
-package com.javaAssessment.poc.user.repository;
+package com.javaAssessment.poc.repository.userrepo;
 
-import com.javaAssessment.poc.entity.Experience;
+import com.javaAssessment.poc.entity.user.Experience;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

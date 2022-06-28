@@ -1,7 +1,7 @@
 package com.javaAssessment.poc.service;
 
-import com.javaAssessment.poc.entity.User;
-import com.javaAssessment.poc.user.repository.UserRepository;
+import com.javaAssessment.poc.entity.user.User;
+import com.javaAssessment.poc.repository.userrepo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

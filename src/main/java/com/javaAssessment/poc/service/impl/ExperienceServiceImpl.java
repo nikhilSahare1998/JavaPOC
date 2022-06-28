@@ -1,11 +1,11 @@
 package com.javaAssessment.poc.service.impl;
 
 import com.javaAssessment.poc.dto.ExperienceDto;
-import com.javaAssessment.poc.entity.Experience;
-import com.javaAssessment.poc.entity.User;
+import com.javaAssessment.poc.entity.user.Experience;
+import com.javaAssessment.poc.entity.user.User;
 import com.javaAssessment.poc.exception.UserException;
-import com.javaAssessment.poc.user.repository.ExperienceRepository;
-import com.javaAssessment.poc.user.repository.UserRepository;
+import com.javaAssessment.poc.repository.userrepo.ExperienceRepository;
+import com.javaAssessment.poc.repository.userrepo.UserRepository;
 import com.javaAssessment.poc.service.ExperienceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

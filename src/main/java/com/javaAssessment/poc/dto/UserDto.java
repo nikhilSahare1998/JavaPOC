@@ -1,7 +1,7 @@
 package com.javaAssessment.poc.dto;
 
 
-import com.javaAssessment.poc.util.UserType;
+import com.javaAssessment.poc.enums.UserType;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -14,6 +14,9 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class UserDto {
+
+    private final String ACTIVE_STATUS = "Active";
+
     private long userId;
 
     @Email(message = "email.invalid")
@@ -59,5 +62,5 @@ public class UserDto {
 
     private UserType userType;
 
-    private String activeStatus = "ACTIVE";
+    private String activeStatus = ACTIVE_STATUS;
 }
